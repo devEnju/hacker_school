@@ -20,14 +20,14 @@ Das Framework Flutter benutzt eine Reihe sehr simpler Bausteine, um die Benutzer
 
 | Widget | Beschreibung |
 | --- | --- |
-| `SizedBox(child: ...)` | Ein Widget kann in eine Box mit nur veränderbarer Größe eingefügt werden. |
-| `Container(child: ...)` | Ein Widget kann in eine Box mit verschiedenen Eigenschaften wie zum Beispiel Größe, Farbe oder Ausrichtung eingefügt werden. |dabei 
-| `Row(children: [..., ...])` | Mehrere Widgets können nebeneinander angeordnet werden und müssen bei der Auflistung mit Kommata getrennt werden. |
-| `Column(children: [..., ...])` | Mehrere Widgets können untereinander angeordnet werden und müssen bei der Auflistung mit Kommata getrennt werden. |
-| `Center(child: ...)` | Zentriert ein Widget in dem zur Verfügung stehenden Platz. |
-| `Padding(padding: ..., child: ...)` | Erstellt einen Abstand zu allen Seiten innerhalb des zur Verfügung stehenden Platzes des Widgets. |
-| `Scaffold(body: ...)` | Dient als Gerüst für jede neue Seite einer App und definiert vorgegebene Plätze für Widgets. |
-| `Text('...')` | Erstellt einen Text, welcher innerhalb der Anführungszeichen definiert werden muss. |
+| <pre>SizedBox(<br>  child: ...,<br>) | Ein Widget kann in eine Box mit nur veränderbarer Größe eingefügt werden. |
+| <pre>Container(<br>  child: ...,<br>) | Ein Widget kann in eine Box mit verschiedenen Eigenschaften wie zum Beispiel Größe, Farbe oder Ausrichtung eingefügt werden. |dabei 
+| <pre>Row(<br>  children: [<br>    ...,<br>    ...,<br>  ],<br>) | Mehrere Widgets können nebeneinander angeordnet werden und müssen bei der Auflistung mit Kommata getrennt werden. |
+| <pre>Column(<br>  children: [<br>    ...,<br>    ...,<br>  ],<br>) | Mehrere Widgets können untereinander angeordnet werden und müssen bei der Auflistung mit Kommata getrennt werden. |
+| <pre>Center(<br>  child: ...,<br>) | Zentriert ein Widget in dem zur Verfügung stehenden Platz. |
+| <pre>Padding(<br>  padding: ...,<br>  child: ...,<br>) | Erstellt einen Abstand zu allen Seiten innerhalb des zur Verfügung stehenden Platzes des Widgets. |
+| <pre>Scaffold(<br>  body: ...,<br>) | Dient als Gerüst für jede neue Seite einer App und definiert vorgegebene Plätze für Widgets. |
+| <pre>Text('...') | Erstellt einen Text, welcher innerhalb der Anführungszeichen definiert werden muss. |
 
 Für jedes Widget gibt es eine Menge verschiedener Eigenschaften, die mithilfe von Visual Studio Code in Erfahrung gebracht werden können. Richtet man die Maus genau über dem ausgeschriebenen Widget aus, werden einem alle möglich einzustellenden Eigenschaften mit einer zusätzlichen Beschreibung zum Widget angezeigt. Andernfalls gibt es auch die sehr ausführliche [Dokumentation](https://docs.flutter.dev/development/ui/widgets) für alle von Flutter zur Verfügung gestellten Widgets.
 
