@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'pages/game_page.dart';
 import 'pages/home_page.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: const HomePage(
-        title: 'Hacker School',
+        header: 'Hacker School',
       ),
       debugShowCheckedModeBanner: false,
     );

@@ -6,9 +6,9 @@ import '../widgets/game_card.dart';
 import '../widgets/result_text.dart';
 
 class GamePage extends StatefulWidget {
-  const GamePage({Key? key, required this.title}) : super(key: key);
+  const GamePage({Key? key, required this.header}) : super(key: key);
 
-  final String title;
+  final String header;
 
   @override
   State<GamePage> createState() => _GamePageState();
@@ -63,7 +63,7 @@ class _GamePageState extends State<GamePage> {
   void setScissors() {
     reset();
     computer();
-    
+
     pScissors = true;
 
     setState(() {});
@@ -73,55 +73,43 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.header),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              flex: 5,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GameCard(pRock, pPaper, pScissors, name: 'Spieler'),
-                  GameCard(cRock, cPaper, cScissors, name: 'Computer'),
-                ],
-              ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GameCard(pRock, pPaper, pScissors, name: 'Spieler'),
+                GameCard(cRock, cPaper, cScissors, name: 'Computer'),
+              ],
             ),
-            Flexible(
-              child: ResultText(
-                pRock,
-                pPaper,
-                pScissors,
-                cRock,
-                cPaper,
-                cScissors,
-              ),
+          ),
+          ResultText(pRock, pPaper, pScissors, cRock, cPaper, cScissors),
+          Expanded(
+            flex: 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () => setScissors(),
+                  child: const Text('Schere'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setRock(),
+                  child: const Text('Stein'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setPaper(),
+                  child: const Text('Papier'),
+                ),
+              ],
             ),
-            Expanded(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () => setScissors(),
-                    child: const Text('Schere'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => setRock(),
-                    child: const Text('Stein'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => setPaper(),
-                    child: const Text('Papier'),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
