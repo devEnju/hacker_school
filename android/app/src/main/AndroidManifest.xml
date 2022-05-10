@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hacker_school">
+    package="com.marvinvogl.hacker_school">
    <application
-        android:label="hacker_school"
+        android:label="Hacker School"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
