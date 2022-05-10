@@ -21,8 +21,10 @@ class ResultText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // es fehlt die Überprüfung wenn ein Spieler gewonnen hat
-    
+    if (pRock && cScissors || pPaper && cRock || pScissors && cPaper) {
+      return const Text('Du hast gewonnen!');
+    }
+
     if (cRock && pScissors || cPaper && pRock || cScissors && pPaper) {
       return const Text('Der Computer hat gewonnen!');
     }

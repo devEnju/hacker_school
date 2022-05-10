@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'pages/game_page.dart';
-import 'pages/home_page.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -13,8 +12,8 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const HomePage(
-        header: 'Hacker School',
+      home: const GamePage(
+        header: 'Schere, Stein, Papier',
       ),
       debugShowCheckedModeBanner: false,
     );

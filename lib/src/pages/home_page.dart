@@ -7,12 +7,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String titel = 'Neuer Titel';
+    String text = 'Hallo Welt!';
+
+    bool richtig = true;
+    bool falsch = false;
+
+    int zahl = 27;
+    zahl = zahl + 1;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(header),
+        title: Text('$header $titel'),
+        centerTitle: richtig,
       ),
-      body: const Center(
-        child: Text('Hallo Welt!'),
+      body: Center(
+        child: Text('$text & $falsch'),
       ),
     );
   }
