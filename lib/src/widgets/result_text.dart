@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
 
+import '../models/player.dart';
+
 class ResultText extends StatelessWidget {
   const ResultText(
-    this.pRock,
-    this.pPaper,
-    this.pScissors,
-    this.cRock,
-    this.cPaper,
-    this.cScissors, {
+    this.player,
+    this.computer, {
     Key? key,
   }) : super(key: key);
 
-  final bool pRock;
-  final bool pPaper;
-  final bool pScissors;
-
-  final bool cRock;
-  final bool cPaper;
-  final bool cScissors;
+  final Player player;
+  final Player computer;
 
   @override
   Widget build(BuildContext context) {
-    if (pRock && cScissors || pPaper && cRock || pScissors && cPaper) {
+    if (player.isWinning(computer.hand)) {
       return const Text('Du hast gewonnen!');
     }
 
-    if (cRock && pScissors || cPaper && pRock || cScissors && pPaper) {
+    if (computer.isWinning(player.hand)) {
       return const Text('Der Computer hat gewonnen!');
     }
 
-    if (pRock || pPaper || pScissors) {
+    if (player.hand != null && computer.hand != null) {
       return const Text('Keiner hat gewonnen.');
     }
 

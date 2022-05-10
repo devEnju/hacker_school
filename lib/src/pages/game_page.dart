@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../models/player.dart';
@@ -20,58 +18,19 @@ class _GamePageState extends State<GamePage> {
   var player = Player('Spieler');
   var computer = Player('Computer');
 
-  bool pRock = false;
-  bool pPaper = false;
-  bool pScissors = false;
-
-  bool cRock = false;
-  bool cPaper = false;
-  bool cScissors = false;
-
   void reset() {
-    pRock = false;
-    pPaper = false;
-    pScissors = false;
-
-    cRock = false;
-    cPaper = false;
-    cScissors = false;
-  }
-
-  void randomize() {
-    int random = Random().nextInt(3);
-
-    if (random == 0) cRock = true;
-    if (random == 1) cPaper = true;
-    if (random == 2) cScissors = true;
-  }
-
-  void setRock() {
-    reset();
-
-    pRock = true;
-
-    randomize();
+    player = Player('Spieler');
+    computer = Player('Computer');
 
     setState(() {});
   }
 
-  void setPaper() {
-    reset();
+  void setHand(Hand hand) {
+    player.hand = hand;
+    computer.randomizeHand();
 
-    pPaper = true;
-
-    randomize();
-
-    setState(() {});
-  }
-
-  void setScissors() {
-    reset();
-
-    pScissors = true;
-
-    randomize();
+    player.increaseCounter(computer);
+    computer.increaseCounter(player);
 
     setState(() {});
   }
@@ -80,6 +39,10 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.refresh),
+          onPressed: () => reset(),
+        ),
         title: Text(widget.header),
         centerTitle: true,
       ),
@@ -90,27 +53,27 @@ class _GamePageState extends State<GamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GameCard(pRock, pPaper, pScissors, name: player.name),
-                GameCard(cRock, cPaper, cScissors, name: computer.name),
+                GameCard(player),
+                GameCard(computer),
               ],
             ),
           ),
-          ResultText(pRock, pPaper, pScissors, cRock, cPaper, cScissors),
+          ResultText(player, computer),
           Expanded(
             flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 ElevatedButton(
-                  onPressed: () => setScissors(),
+                  onPressed: () => setHand(Hand.scissors),
                   child: const Text('Schere'),
                 ),
                 ElevatedButton(
-                  onPressed: () => setRock(),
+                  onPressed: () => setHand(Hand.rock),
                   child: const Text('Stein'),
                 ),
                 ElevatedButton(
-                  onPressed: () => setPaper(),
+                  onPressed: () => setHand(Hand.paper),
                   child: const Text('Papier'),
                 ),
               ],
