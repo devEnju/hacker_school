@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../models/player.dart';
+
 import '../widgets/game_card.dart';
 import '../widgets/result_text.dart';
 
@@ -15,6 +17,9 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+  var player = Player('Spieler');
+  var computer = Player('Computer');
+
   bool pRock = false;
   bool pPaper = false;
   bool pScissors = false;
@@ -33,7 +38,7 @@ class _GamePageState extends State<GamePage> {
     cScissors = false;
   }
 
-  void computer() {
+  void randomize() {
     int random = Random().nextInt(3);
 
     // momentan wählt der Computer immer einen Stein
@@ -43,30 +48,33 @@ class _GamePageState extends State<GamePage> {
   }
 
   void setRock() {
-    reset();
-    computer();
-
     pRock = true;
 
+    randomize();
+
     setState(() {});
+
+    reset();
   }
 
   void setPaper() {
-    reset();
-    computer();
-
     pPaper = true;
 
+    randomize();
+
     setState(() {});
+
+    reset();
   }
 
   void setScissors() {
-    reset();
-    computer();
-
     pScissors = true;
 
+    randomize();
+
     setState(() {});
+
+    reset();
   }
 
   @override
@@ -83,8 +91,8 @@ class _GamePageState extends State<GamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GameCard(pRock, pPaper, pScissors, name: 'Spieler'),
-                GameCard(cRock, cPaper, cScissors, name: 'Computer'),
+                GameCard(pRock, pPaper, pScissors, name: player.name),
+                GameCard(cRock, cPaper, cScissors, name: computer.name),
               ],
             ),
           ),
