@@ -1,33 +1,27 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../provider/game_provider.dart';
+
 class ResultText extends StatelessWidget {
-  const ResultText(
-    this.pRock,
-    this.pPaper,
-    this.pScissors,
-    this.cRock,
-    this.cPaper,
-    this.cScissors, {
+  const ResultText({
     Key? key,
   }) : super(key: key);
 
-  final bool pRock;
-  final bool pPaper;
-  final bool pScissors;
-
-  final bool cRock;
-  final bool cPaper;
-  final bool cScissors;
-
   @override
   Widget build(BuildContext context) {
-    // es fehlt die Überprüfung wenn ein Spieler gewonnen hat
-    
-    if (cRock && pScissors || cPaper && pRock || cScissors && pPaper) {
+    var provider = context.watch<GameProvider>();
+
+    if (provider.won()) {
+      return const Text('Du hast gewonnen!');
+    }
+
+    if (provider.lost()) {
       return const Text('Der Computer hat gewonnen!');
     }
 
-    if (pRock || pPaper || pScissors) {
+    if (provider.player.hand != null && provider.computer.hand != null) {
       return const Text('Keiner hat gewonnen.');
     }
 

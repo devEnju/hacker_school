@@ -1,26 +1,24 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Element;
+
+import '../models/player.dart';
 
 class ChoiceText extends StatelessWidget {
   const ChoiceText(
-    this.rock,
-    this.paper,
-    this.scissors, {
+    this.hand, {
     Key? key,
   }) : super(key: key);
 
-  final bool rock;
-  final bool paper;
-  final bool scissors;
+  final Hand? hand;
 
   @override
   Widget build(BuildContext context) {
-    if (rock) {
+    if (hand == Hand.rock) {
       return const Text('Stein');
     }
-    if (paper) {
+    if (hand == Hand.paper) {
       return const Text('Papier');
     }
-    if (scissors) {
+    if (hand == Hand.scissors) {
       return const Text('Schere');
     }
 

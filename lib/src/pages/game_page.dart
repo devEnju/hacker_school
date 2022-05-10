@@ -1,115 +1,123 @@
-import 'dart:math';
+import 'package:camera/camera.dart';
 
 import 'package:flutter/material.dart';
+
+import 'package:huawei_ml_body/huawei_ml_body.dart';
+
+import 'package:provider/provider.dart';
+
+import '../models/player.dart';
+
+import '../provider/game_provider.dart';
 
 import '../widgets/game_card.dart';
 import '../widgets/result_text.dart';
 
 class GamePage extends StatefulWidget {
-  const GamePage({Key? key, required this.header}) : super(key: key);
+  const GamePage({
+    Key? key,
+    required this.header,
+    required this.camera,
+  }) : super(key: key);
 
   final String header;
+  final CameraDescription camera;
 
   @override
   State<GamePage> createState() => _GamePageState();
 }
 
 class _GamePageState extends State<GamePage> {
-  bool pRock = false;
-  bool pPaper = false;
-  bool pScissors = false;
+  late CameraController controller;
 
-  bool cRock = false;
-  bool cPaper = false;
-  bool cScissors = false;
+  Future<void> picture() async {
+    XFile image = await controller.takePicture();
 
-  void reset() {
-    pRock = false;
-    pPaper = false;
-    pScissors = false;
-
-    cRock = false;
-    cPaper = false;
-    cScissors = false;
+    await analyze(image.path);
   }
 
-  void computer() {
-    int random = Random().nextInt(3);
+  Future<void> analyze(String path) async {
+    var analyzer = MLGestureAnalyzer();
 
-    // momentan wählt der Computer immer einen Stein
-    if (random == 0) cRock = true;
-    if (random == 1) cRock = true;
-    if (random == 2) cRock = true;
+    List<MLGesture> list = await analyzer.analyseFrame(path);
+
+    if (list.isNotEmpty) {
+      MLGesture result = list.first;
+
+      var provider = context.read<GameProvider>();
+
+      if (result.category == MLGesture.fist) {
+        provider.setHand(Hand.rock);
+      }
+      if (result.category == MLGesture.five) {
+        provider.setHand(Hand.paper);
+      }
+      if (result.category == MLGesture.second) {
+        provider.setHand(Hand.scissors);
+      }
+    }
+
+    await analyzer.stop();
   }
 
-  void setRock() {
-    reset();
-    computer();
-
-    pRock = true;
-
-    setState(() {});
+  @override
+  void initState() {
+    super.initState();
+    controller = CameraController(
+      widget.camera,
+      ResolutionPreset.medium,
+    );
   }
 
-  void setPaper() {
-    reset();
-    computer();
-
-    pPaper = true;
-
-    setState(() {});
-  }
-
-  void setScissors() {
-    reset();
-    computer();
-
-    pScissors = true;
-
-    setState(() {});
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    var provider = context.read<GameProvider>();
+
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.refresh),
+          onPressed: () => provider.reset(),
+        ),
         title: Text(widget.header),
         centerTitle: true,
       ),
       body: Column(
         children: <Widget>[
+          const Expanded(
+            flex: 2,
+            child: GameCards(),
+          ),
+          const ResultText(),
           Expanded(
             flex: 5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GameCard(pRock, pPaper, pScissors, name: 'Spieler'),
-                GameCard(cRock, cPaper, cScissors, name: 'Computer'),
-              ],
-            ),
-          ),
-          ResultText(pRock, pPaper, pScissors, cRock, cPaper, cScissors),
-          Expanded(
-            flex: 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () => setScissors(),
-                  child: const Text('Schere'),
-                ),
-                ElevatedButton(
-                  onPressed: () => setRock(),
-                  child: const Text('Stein'),
-                ),
-                ElevatedButton(
-                  onPressed: () => setPaper(),
-                  child: const Text('Papier'),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: FutureBuilder<void>(
+                future: controller.initialize(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: CameraPreview(controller),
+                    );
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => picture(),
+        child: const Icon(Icons.camera_alt),
       ),
     );
   }
