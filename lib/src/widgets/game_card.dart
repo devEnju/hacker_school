@@ -24,14 +24,17 @@ class GameCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 4.0),
-                child: Icon(icon, size: 16.0),
-              ),
-              Text('${player.name}: ${player.counter}'),
-            ]),
-            Expanded(child: Center(child: ChoiceImage(player.hand))),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Row(children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 4.0),
+                  child: Icon(icon, size: 16.0),
+                ),
+                Text('${player.name}: ${player.counter}'),
+              ]),
+            ),
+            Expanded(child: ChoiceImage(player.hand)),
           ],
         ),
       ),
