@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Element;
 
 import '../models/player.dart';
 
@@ -48,33 +48,33 @@ class _GamePageState extends State<GamePage> {
   }
 
   void setRock() {
+    reset();
+
     pRock = true;
 
     randomize();
 
     setState(() {});
-
-    reset();
   }
 
   void setPaper() {
+    reset();
+
     pPaper = true;
 
     randomize();
 
     setState(() {});
-
-    reset();
   }
 
   void setScissors() {
+    reset();
+
     pScissors = true;
 
     randomize();
 
     setState(() {});
-
-    reset();
   }
 
   @override
