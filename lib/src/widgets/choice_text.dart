@@ -12,16 +12,17 @@ class ChoiceText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (hand == Hand.rock) {
-      return const Text('Stein');
+    if (hand != null) {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(image: AssetImage('images/${hand!.name}.png')),
+          border: Border.all(color: const Color(0xff601155), width: 2.0),
+          shape: BoxShape.circle,
+        ),
+        margin: const EdgeInsets.all(4.0),
+      );
     }
-    if (hand == Hand.paper) {
-      return const Text('Papier');
-    }
-    if (hand == Hand.scissors) {
-      return const Text('Schere');
-    }
-
     return Container();
   }
 }
