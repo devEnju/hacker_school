@@ -40,6 +40,7 @@ Im Laufe unseres Kurses benutze ich eine Reihe von Tastaturbefehlen, die nicht u
 | Tastenkombination | Beschreibung |
 | --- | --- |
 | `Shift` + `Alt` + `F` | Formatiert euren Code, sofern ihr keine Fehler habt. |dabei 
+| `Strg` + `S` | Speichert aktuelles Dokument und aktualisiert das Projekt. |
 | `Strg` + `Space` | Zeigt euch Code Vorschläge zum vervollständigen an. |
 | `Strg` + `.` | Lässt euch bereits geschriebenen Code anpassen. |
 | `Strg` + `#` | Wandelt eine Zeile in einen Kommentar um. |

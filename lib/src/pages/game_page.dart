@@ -1,12 +1,12 @@
 import 'package:camera/camera.dart';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Element;
+
+import '../models/player.dart';
 
 import 'package:huawei_ml_body/huawei_ml_body.dart';
 
 import 'package:provider/provider.dart';
-
-import '../models/player.dart';
 
 import '../provider/game_provider.dart';
 
