@@ -6,11 +6,13 @@ import 'choice_image.dart';
 
 class GameCard extends StatelessWidget {
   const GameCard(
-    this.player, {
+    this.player,
+    this.icon, {
     Key? key,
   }) : super(key: key);
 
   final Player player;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,13 @@ class GameCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('${player.name}: ${player.counter}'),
+            Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 4.0),
+                child: Icon(icon, size: 16.0),
+              ),
+              Text('${player.name}: ${player.counter}'),
+            ]),
             Expanded(child: Center(child: ChoiceImage(player.hand))),
           ],
         ),

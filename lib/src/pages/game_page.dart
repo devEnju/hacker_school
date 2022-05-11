@@ -53,8 +53,8 @@ class _GamePageState extends State<GamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GameCard(player),
-                GameCard(computer),
+                GameCard(player, Icons.person),
+                GameCard(computer, Icons.computer),
               ],
             ),
           ),
