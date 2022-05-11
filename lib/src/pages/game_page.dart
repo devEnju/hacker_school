@@ -2,14 +2,15 @@ import 'package:camera/camera.dart';
 
 import 'package:flutter/material.dart' hide Element;
 
-import '../models/player.dart';
-
 import 'package:huawei_ml_body/huawei_ml_body.dart';
 
 import 'package:provider/provider.dart';
 
+import '../models/player.dart';
+
 import '../provider/game_provider.dart';
 
+import '../widgets/camera_card.dart';
 import '../widgets/game_card.dart';
 import '../widgets/result_text.dart';
 
@@ -97,21 +98,7 @@ class _GamePageState extends State<GamePage> {
           const ResultText(),
           Expanded(
             flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: FutureBuilder<void>(
-                future: controller.initialize(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: CameraPreview(controller),
-                    );
-                  }
-                  return const Center(child: CircularProgressIndicator());
-                },
-              ),
-            ),
+            child: CameraCard(cameraController: controller),
           ),
         ],
       ),
