@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/player.dart';
 
-import 'choice_text.dart';
+import 'choice_image.dart';
 
 class GameCard extends StatelessWidget {
   const GameCard(
@@ -23,7 +23,7 @@ class GameCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('${player.name}: ${player.counter}'),
-            Expanded(child: Center(child: ChoiceText(player.hand))),
+            Expanded(child: Center(child: ChoiceImage(player.hand))),
           ],
         ),
       ),
