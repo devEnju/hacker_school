@@ -3,6 +3,7 @@ import 'package:flutter/material.dart' hide Element;
 import '../models/player.dart';
 
 import '../widgets/game_card.dart';
+import '../widgets/image_button.dart';
 import '../widgets/result_text.dart';
 
 class GamePage extends StatefulWidget {
@@ -64,17 +65,20 @@ class _GamePageState extends State<GamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                ElevatedButton(
-                  onPressed: () => setHand(Hand.scissors),
-                  child: const Text('Schere'),
+                ImageButton(
+                  Hand.scissors,
+                  onPressed: setHand,
+                  size: 60.0,
                 ),
-                ElevatedButton(
-                  onPressed: () => setHand(Hand.rock),
-                  child: const Text('Stein'),
+                ImageButton(
+                  Hand.rock,
+                  onPressed: setHand,
+                  size: 60.0,
                 ),
-                ElevatedButton(
-                  onPressed: () => setHand(Hand.paper),
-                  child: const Text('Papier'),
+                ImageButton(
+                  Hand.paper,
+                  onPressed: setHand,
+                  size: 60.0,
                 ),
               ],
             ),
