@@ -8,8 +8,8 @@ class GameCard extends StatelessWidget {
   const GameCard(
     this.player,
     this.icon, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Player player;
   final IconData icon;

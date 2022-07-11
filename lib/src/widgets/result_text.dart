@@ -6,8 +6,8 @@ class ResultText extends StatelessWidget {
   const ResultText(
     this.player,
     this.computer, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Player player;
   final Player computer;

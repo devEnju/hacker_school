@@ -5,8 +5,8 @@ import '../models/player.dart';
 class ChoiceText extends StatelessWidget {
   const ChoiceText(
     this.hand, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Hand? hand;
 

@@ -7,7 +7,10 @@ import '../widgets/image_button.dart';
 import '../widgets/result_text.dart';
 
 class GamePage extends StatefulWidget {
-  const GamePage({Key? key, required this.header}) : super(key: key);
+  const GamePage({
+    super.key,
+    required this.header,
+  });
 
   final String header;
 
