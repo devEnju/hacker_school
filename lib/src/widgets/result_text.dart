@@ -5,9 +5,21 @@ import 'package:provider/provider.dart';
 import '../provider/game_provider.dart';
 
 class ResultText extends StatelessWidget {
+<<<<<<< HEAD
   const ResultText({
     Key? key,
   }) : super(key: key);
+=======
+  const ResultText(
+    this.pRock,
+    this.pPaper,
+    this.pScissors,
+    this.cRock,
+    this.cPaper,
+    this.cScissors, {
+    super.key,
+  });
+>>>>>>> acc8bb3eb451edc1267eee4e966163ec97c39bcf
 
   @override
   Widget build(BuildContext context) {
