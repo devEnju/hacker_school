@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class CameraCard extends StatelessWidget {
   const CameraCard({
-    Key? key,
+    super.key,
     required this.cameraController,
-  }) : super(key: key);
+  });
 
   final CameraController cameraController;
 

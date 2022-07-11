@@ -16,16 +16,10 @@ import '../widgets/result_text.dart';
 
 class GamePage extends StatefulWidget {
   const GamePage({
-<<<<<<< HEAD
-    Key? key,
-    required this.header,
-    required this.camera,
-  }) : super(key: key);
-=======
     super.key,
     required this.header,
+    required this.camera,
   });
->>>>>>> acc8bb3eb451edc1267eee4e966163ec97c39bcf
 
   final String header;
   final CameraDescription camera;

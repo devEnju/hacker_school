@@ -9,7 +9,7 @@ import '../provider/game_provider.dart';
 import 'choice_text.dart';
 
 class GameCards extends StatelessWidget {
-  const GameCards({Key? key}) : super(key: key);
+  const GameCards({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +27,10 @@ class GameCards extends StatelessWidget {
 
 class GameCard extends StatelessWidget {
   const GameCard(
-<<<<<<< HEAD
     this.player,
     this.icon, {
-    Key? key,
-  }) : super(key: key);
-=======
-    this.rock,
-    this.paper,
-    this.scissors, {
     super.key,
-    required this.name,
   });
->>>>>>> acc8bb3eb451edc1267eee4e966163ec97c39bcf
 
   final Player player;
   final IconData icon;
