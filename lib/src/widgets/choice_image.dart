@@ -5,8 +5,8 @@ import '../models/player.dart';
 class ChoiceImage extends StatelessWidget {
   const ChoiceImage(
     this.hand, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Hand? hand;
 

@@ -7,8 +7,8 @@ class ImageButton extends StatelessWidget {
     this.hand, {
     required this.onPressed,
     this.size,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Hand hand;
   final void Function(Hand hand) onPressed;
