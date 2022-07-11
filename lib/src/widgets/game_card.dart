@@ -7,9 +7,9 @@ class GameCard extends StatelessWidget {
     this.rock,
     this.paper,
     this.scissors, {
-    Key? key,
+    super.key,
     required this.name,
-  }) : super(key: key);
+  });
 
   final bool rock;
   final bool paper;

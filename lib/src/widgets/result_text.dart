@@ -8,8 +8,8 @@ class ResultText extends StatelessWidget {
     this.cRock,
     this.cPaper,
     this.cScissors, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool pRock;
   final bool pPaper;
