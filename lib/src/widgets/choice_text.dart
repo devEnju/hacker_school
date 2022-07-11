@@ -5,8 +5,8 @@ class ChoiceText extends StatelessWidget {
     this.rock,
     this.paper,
     this.scissors, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool rock;
   final bool paper;

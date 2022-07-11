@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.header}) : super(key: key);
+  const HomePage({
+    super.key,
+    required this.header,
+  });
 
   final String header;
 
