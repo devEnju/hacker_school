@@ -42,12 +42,12 @@ class _GamePageState extends State<GamePage> {
   }
 
   void randomize() {
-    int random = Random().nextInt(3);
+    int dice = Random().nextInt(3);
 
     // momentan wählt der Computer immer einen Stein
-    if (random == 0) cRock = true;
-    if (random == 1) cRock = true;
-    if (random == 2) cRock = true;
+    if (dice == 0) cRock = true;
+    if (dice == 1) cRock = true;
+    if (dice == 2) cRock = true;
   }
 
   void setRock() {
