@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/player.dart';
+
 import 'choice_text.dart';
 
 class GameCard extends StatelessWidget {
@@ -8,14 +10,14 @@ class GameCard extends StatelessWidget {
     this.paper,
     this.scissors, {
     super.key,
-    required this.name,
+    required this.player,
   });
 
   final bool rock;
   final bool paper;
   final bool scissors;
 
-  final String name;
+  final Player player;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class GameCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(name),
+            Text(player.name),
             Expanded(child: Center(child: ChoiceText(rock, paper, scissors))),
           ],
         ),

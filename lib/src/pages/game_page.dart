@@ -94,8 +94,8 @@ class _GamePageState extends State<GamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GameCard(pRock, pPaper, pScissors, name: player.name),
-                GameCard(cRock, cPaper, cScissors, name: computer.name),
+                GameCard(pRock, pPaper, pScissors, player: player),
+                GameCard(cRock, cPaper, cScissors, player: computer),
               ],
             ),
           ),
