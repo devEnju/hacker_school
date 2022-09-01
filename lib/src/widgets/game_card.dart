@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/player.dart';
 
+// import 'choice_image.dart';
 import 'choice_text.dart';
 
 class GameCard extends StatelessWidget {
